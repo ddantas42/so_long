@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/22 22:19:08 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:29:50 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,39 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
 	t_data	img;
-	
+	t_vars	vars;
+
 	(void)argc;
 	(void)argv;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920/2, 1520/2, "So_long :D");
-	img.img = mlx_new_image(mlx, 1920/2, 1520/2);
+	
+	vars.mlx = mlx_init();
+	
+
+	img.img = mlx_new_image(vars.mlx, 1000, 500);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	//my_mlx_pixel_put(&img, n, b, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	
+	vars.mlx_win = mlx_new_window(vars.mlx, 1000, 500, "So_long :D");
+
+	
+	/* TESTING ZONE START */
+	int n = 0;int b = 0; int color;
+	while (n++ < 500)
+	{
+		color = create_trgb(100, 255, 255, 255);
+		b = 0;
+		while (b++ < 500)
+			my_mlx_pixel_put(&img, n, b, color);
+	}
+	
+	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
+	/* TESTING ZONE OVER */
+
+
+	
 	ft_printf("Estou a funcionar!!! :D\n");
+	mlx_hook(vars.mlx_win, 2, (1L << 0), hook_actions, &vars);
+	
+	mlx_loop(vars.mlx);
 	return (0);
 }

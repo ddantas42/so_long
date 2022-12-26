@@ -6,7 +6,7 @@
 #    By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 17:37:45 by ddantas-          #+#    #+#              #
-#    Updated: 2022/12/22 22:04:35 by ddantas-         ###   ########.fr        #
+#    Updated: 2022/12/26 17:07:00 by ddantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 RM = rm
+
 FILESC = so_long.c \
-		color.c
+		color.c \
+		key_events.c
 
 OBJS = $(FILESC:.c=.o)
 
