@@ -6,7 +6,7 @@
 #    By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 17:37:45 by ddantas-          #+#    #+#              #
-#    Updated: 2022/12/26 17:07:00 by ddantas-         ###   ########.fr        #
+#    Updated: 2022/12/27 20:12:58 by ddantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ RM = rm
 
 FILESC = so_long.c \
 		color.c \
-		key_events.c
+		key_events.c \
+		map_error.c
 
 OBJS = $(FILESC:.c=.o)
 

@@ -6,11 +6,17 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/26 18:29:50 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/27 22:34:22 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	erro(void)
+{
+	ft_printf("Error\n");
+	return(0);
+}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -41,7 +47,7 @@ int main(int argc, char **argv)
 	int n = 0;int b = 0; int color;
 	while (n++ < 500)
 	{
-		color = create_trgb(100, 255, 255, 255);
+		color = create_trgb(100, 255, 0, 0);
 		b = 0;
 		while (b++ < 500)
 			my_mlx_pixel_put(&img, n, b, color);

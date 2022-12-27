@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/26 18:28:47 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:13:39 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int	get_b(int trgb);
 /*		key_events.c	*/
 int	hook_actions(int keycode, t_vars *vars);
 
+/*		map_error.c		*/
 #endif
