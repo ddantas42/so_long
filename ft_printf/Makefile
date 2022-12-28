@@ -31,7 +31,7 @@ clean:
 	rm -f *.o
 
 fclean: clean
-	rm -f libftprintf.a
+	rm -f $(NAME)
 
 re: fclean all
 
