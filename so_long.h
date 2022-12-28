@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/27 20:13:39 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:13:42 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "./mlx_linux/mlx_int.h"
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
+# include "./get_next_line/get_next_line.h"
 
 # define ESCAPE 65307
 
@@ -42,8 +43,16 @@ int	get_r(int trgb);
 int	get_g(int trgb);
 int	get_b(int trgb);
 
+/*		so_long_utils.c		*/
+int	file_lengh(int fd);
+
+
 /*		key_events.c	*/
-int	hook_actions(int keycode, t_vars *vars);
+int	keypress_actions(int keycode, t_vars *vars);
 
 /*		map_error.c		*/
+int map_closed(unsigned char **map, int lines);
+int	map_empty(unsigned char **map);
+int	map_checker(char *file, int argc);
+
 #endif

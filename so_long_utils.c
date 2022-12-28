@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_events.c                                       :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/28 14:04:42 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:15:50 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	keypress_actions(int keycode, t_vars *vars)
+int	file_lengh(int fd)
 {
-	ft_printf("Key pressed = %d\n", keycode);
-	if (keycode == ESCAPE)
-		mlx_destroy_window(vars->mlx, vars->mlx_win);
-	return (0);
+	int len;
+	unsigned char *temp;
+	
+	temp = (unsigned char *)malloc(255);
+	temp = (unsigned char *)get_next_line(fd);
+	len = 0;
+	while (temp)
+	{
+		len += ft_strlen((const char *)temp);
+		temp = (unsigned char *)get_next_line(fd);
+	}
+	free(temp);
+	close(fd);
+	return (len);
 }

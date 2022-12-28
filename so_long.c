@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/27 22:34:22 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/28 19:34:51 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,80 @@ int main(int argc, char **argv)
 {
 	t_data	img;
 	t_vars	vars;
+	int x_window;
+	int y_window;
 
 	(void)argc;
-	(void)argv;
 	
-	vars.mlx = mlx_init();
-	
+	if (map_checker(argv[1], argc) == 1)
+		return (0);
 
-	img.img = mlx_new_image(vars.mlx, 1000, 500);
+	vars.mlx = mlx_init();
+
+	x_window = 1000;
+	y_window = 500;
+	
+	img.img = mlx_new_image(vars.mlx, x_window, y_window);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
 	
-	vars.mlx_win = mlx_new_window(vars.mlx, 1000, 500, "So_long :D");
+	vars.mlx_win = mlx_new_window(vars.mlx, x_window, y_window, "So_long :D");
 
 	
 	/* TESTING ZONE START */
-	int n = 0;int b = 0; int color;
-	while (n++ < 500)
+	int n = 0;int j = 0; int color; int r = 255; int g = 0; int b = 0; int loops = 1;
+	while (n++ < x_window)
 	{
-		color = create_trgb(100, 255, 0, 0);
-		b = 0;
-		while (b++ < 500)
-			my_mlx_pixel_put(&img, n, b, color);
+		j = 0;
+		color = create_trgb(100, r, g, b);
+		if (loops == 1)
+		{
+			g++;
+			if (g == 255)
+				loops = 2;
+		}
+		if (loops == 2)
+		{
+			r--;
+			if (r == 0)
+				loops = 3;
+		}
+		if (loops == 3)
+		{
+			b++;
+			if (b == 255)
+				loops = 4;
+		}
+		if (loops == 4)
+		{
+			g--;
+			if (g == 0)
+				loops = 5;
+		}
+		if (loops == 5)
+		{
+			r++;
+			if (r == 255)
+				loops = 6;
+		}
+		if (loops == 6)
+		{
+			b--;
+			if (b == 0)
+				loops = 1;
+		}
+		while (j++ < y_window)
+		{	
+			my_mlx_pixel_put(&img, n, j, color);
+		}
 	}
 	
-	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
 	/* TESTING ZONE OVER */
 
 
-	
 	ft_printf("Estou a funcionar!!! :D\n");
-	mlx_hook(vars.mlx_win, 2, (1L << 0), hook_actions, &vars);
+	
+	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
+	mlx_hook(vars.mlx_win, 2, (1L << 0), keypress_actions, &vars);
 	
 	mlx_loop(vars.mlx);
 	return (0);
