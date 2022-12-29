@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/28 18:13:42 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:12:03 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 
 # define ESCAPE 65307
 
-typedef struct	s_vars {
+typedef struct s_vars {
 	void	*mlx;
 	void	*mlx_win;
 }				t_vars;
 
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -52,6 +52,7 @@ int	keypress_actions(int keycode, t_vars *vars);
 
 /*		map_error.c		*/
 int map_closed(unsigned char **map, int lines);
+int map_square(unsigned char **map, int lines);
 int	map_empty(unsigned char **map);
 int	map_checker(char *file, int argc);
 

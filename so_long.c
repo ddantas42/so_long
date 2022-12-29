@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/28 19:34:51 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:10:11 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	int y_window;
 
 	(void)argc;
-	
+
 	if (map_checker(argv[1], argc) == 1)
 		return (0);
 
@@ -42,10 +42,10 @@ int main(int argc, char **argv)
 
 	x_window = 1000;
 	y_window = 500;
-	
+
 	img.img = mlx_new_image(vars.mlx, x_window, y_window);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,&img.line_length,&img.endian);
+
 	vars.mlx_win = mlx_new_window(vars.mlx, x_window, y_window, "So_long :D");
 
 	
@@ -101,10 +101,10 @@ int main(int argc, char **argv)
 
 
 	ft_printf("Estou a funcionar!!! :D\n");
-	
+
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
 	mlx_hook(vars.mlx_win, 2, (1L << 0), keypress_actions, &vars);
-	
+
 	mlx_loop(vars.mlx);
 	return (0);
 }

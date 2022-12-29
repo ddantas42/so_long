@@ -6,13 +6,36 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/29 18:02:58 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:05:38 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int map_closed(unsigned char **map, int lines)
+int	map_square(unsigned char **map, int lines)
+{
+	int	n;
+	int	line_lengh;
+
+	n = 0;
+	line_lengh = ft_strlen((const char *)map[n]) - 1;
+	if (line_lengh == lines)
+	{
+		ft_printf("Error\nMap bad format (Must be rectangular)\n");	
+		return (0);
+	}
+	while (map[n]
+		&& line_lengh == (((int)(ft_strlen((const char *)map[n]))) - 1))
+		n++;
+	if (n == lines)
+		n--;
+	if (line_lengh == (((int)(ft_strlen((const char *)map[n])))))
+		return (1);
+	ft_printf("Error\nMap bad format (Must be rectangular)\n");	
+	return (0);
+}
+
+int	map_closed(unsigned char **map, int lines)
 {
 	int	len;
 	int	n;
@@ -83,7 +106,7 @@ int	map_checker(char *file, int argc)
 	map[n] = (unsigned char *)get_next_line(fd_new);
 	while (map[n])
 		map[++n] = (unsigned char *)get_next_line(fd_new);
-	if (map_empty(map) && map_closed(map, n - 1) && map_square(map, n - 1))
+	if (map_square(map, n) && map_empty(map) && map_closed(map, n - 1))
 		return (0);
 	return (1);
 }
