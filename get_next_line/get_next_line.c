@@ -17,7 +17,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	temp[BUFFER_SIZE + 1];
 	ssize_t		read_size;
- 
+
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= FOPEN_MAX)
 		return (NULL);
 	read_size = 1;
