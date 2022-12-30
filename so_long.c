@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:22:29 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:38:52 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ int main(int argc, char **argv)
 	ft_printf("Estou a funcionar!!! :D\n");
 
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
-	mlx_hook(vars.mlx_win, 2, (1L << 0), keypress_actions, &vars);
-
+	mlx_hook(vars.mlx_win, 2, (1L << 0), exit_actions, &vars);
+	mlx_hook(vars.mlx_win, 17, (1L << 0), exit_actions, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

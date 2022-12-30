@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:34:24 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:41:47 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	map_cep_error(int c, int e, int p, int invalid);
 int	map_cep_error_2(int p, int invalid);
 
 /*		key_events.c	*/
-int	keypress_actions(int keycode, t_vars *vars);
+int	exit_actions(int keycode, t_vars *vars);
 
 /*		map_error.c		*/
 int map_square(unsigned char **map, int lines);

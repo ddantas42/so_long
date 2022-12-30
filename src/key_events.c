@@ -6,13 +6,13 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:20:08 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:43:46 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	keypress_actions(int keycode, t_vars *vars)
+int	exit_actions(int keycode, t_vars *vars)
 {
 	ft_printf("Key pressed = %d\n", keycode);
 	if (keycode == ESCAPE)
@@ -23,3 +23,4 @@ int	keypress_actions(int keycode, t_vars *vars)
 	}
 	return (0);
 }
+
