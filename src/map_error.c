@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 15:02:06 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:04:59 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	map_square(unsigned char **map, int lines)
 	line_lengh = ft_strlen((const char *)map[n]) - 1;
 	if (line_lengh == lines)
 	{
-		ft_printf("Error\nMap bad format (Must be rectangular)\n");	
+		ft_printf("Error\nMap bad1 format (Must be rectangular)\n");	
 		return (0);
 	}
 	while (map[n]
