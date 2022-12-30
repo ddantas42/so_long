@@ -6,7 +6,7 @@
 #    By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 17:37:45 by ddantas-          #+#    #+#              #
-#    Updated: 2022/12/30 13:44:32 by ddantas-         ###   ########.fr        #
+#    Updated: 2022/12/30 15:12:39 by ddantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,9 @@ $(GETNEXTLINE):
 %.o: %.c
 	$(CC) $(CFLAGS) -O3 -c -o $@ $<
 
-
 clean:
-	$(RM) -f *.o
+	$(RM) -f $(NAME).o
+	$(RM) -f ./src/*.o
 	$(MAKE) -C libft fclean
 	$(MAKE) -C ft_printf fclean
 	$(MAKE) -C get_next_line fclean

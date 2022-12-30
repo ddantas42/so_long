@@ -6,11 +6,11 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 15:18:40 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:20:08 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 int	keypress_actions(int keycode, t_vars *vars)
 {

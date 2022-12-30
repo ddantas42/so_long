@@ -6,11 +6,11 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 14:57:10 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:22:29 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./src/so_long.h"
 
 int	erro(void)
 {

@@ -6,11 +6,11 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:04:59 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:30:32 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 int	map_square(unsigned char **map, int lines)
 {
@@ -21,7 +21,7 @@ int	map_square(unsigned char **map, int lines)
 	line_lengh = ft_strlen((const char *)map[n]) - 1;
 	if (line_lengh == lines)
 	{
-		ft_printf("Error\nMap bad1 format (Must be rectangular)\n");	
+		ft_printf("Error\nMap bad format (Must be rectangular)\n");
 		return (0);
 	}
 	while (map[n]
@@ -31,7 +31,7 @@ int	map_square(unsigned char **map, int lines)
 		n--;
 	if (line_lengh == (((int)(ft_strlen((const char *)map[n])))))
 		return (1);
-	ft_printf("Error\nMap bad format (Must be rectangular)\n");	
+	ft_printf("Error\nMap bad format (Must be rectangular)\n");
 	return (0);
 }
 
@@ -69,15 +69,20 @@ int	map_closed(unsigned char **map, int lines)
 		}
 		l--;
 	}
-	return (1);
+	return (map_closed_2(map, l, n));
 }
 
-int	map_empty(unsigned char **map)
+int map_closed_2(unsigned char **map, int l, int n)
 {
-	if (!map[0])
+l--;
+	while (l >= 0)
 	{
-		ft_printf("Error\nEmpty map\n");
-		return (0);
+		if (map[l][0] != '1' || map[l][n - 1] != '1')
+		{
+			ft_printf("Error\nMap not surrounded by walls\n");
+			return (0);
+		}
+		l--;
 	}
 	return (1);
 }
@@ -139,7 +144,7 @@ int	map_checker(char *file, int argc)
 	map[n] = (unsigned char *)get_next_line(fd_new);
 	while (map[n])
 		map[++n] = (unsigned char *)get_next_line(fd_new);
-	if (map_empty(map) && map_square(map, n) && map_closed(map, n - 1) && map_cep(map,n - 1))
+	if (map_square(map, n) && map_closed(map, n - 1) && map_cep(map,n - 1))
 		return (0);
 	return (1);
 }
