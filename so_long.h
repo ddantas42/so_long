@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/29 18:12:03 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:37:47 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	get_b(int trgb);
 
 /*		so_long_utils.c		*/
 int	file_lengh(int fd);
+int	map_cep_error(int c, int e, int p, int invalid);
 
 
 /*		key_events.c	*/
@@ -54,6 +55,7 @@ int	keypress_actions(int keycode, t_vars *vars);
 int map_closed(unsigned char **map, int lines);
 int map_square(unsigned char **map, int lines);
 int	map_empty(unsigned char **map);
+int map_cep(unsigned char **map, int lines);
 int	map_checker(char *file, int argc);
 
 #endif
