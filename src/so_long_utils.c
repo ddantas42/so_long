@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2022/12/30 14:54:21 by ddantas-         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:25:02 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	file_lengh(int fd)
 	
 	temp = (unsigned char *)malloc(255);
 	temp = (unsigned char *)get_next_line(fd);
+	if (!temp)
+	{
+		printf("Error\nFile empty or not found\n");
+		exit(EXIT_FAILURE);
+	}
 	len = 0;
 	while (temp)
 	{
