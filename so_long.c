@@ -12,12 +12,6 @@
 
 #include "./src/so_long.h"
 
-int	erro(void)
-{
-	ft_printf("Error\n");
-	return(0);
-}
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -101,8 +95,8 @@ int main(int argc, char **argv)
 	ft_printf("Estou a funcionar!!! :D\n");
 
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
-	mlx_hook(vars.mlx_win, 2, (1L << 0), exit_actions, &vars);
-	mlx_hook(vars.mlx_win, 17, (1L << 0), exit_actions, &vars);
+	mlx_hook(vars.mlx_win, ON_KEYPRESS, KEYPRESSMASK, keypress_actions, &vars);
+	mlx_hook(vars.mlx_win, ON_DESTROY, 0L, keypress_actions, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
