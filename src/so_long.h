@@ -55,7 +55,7 @@ int	get_g(int trgb);
 int	get_b(int trgb);
 
 /*		so_long_utils.c		*/
-int	file_lengh(int fd);
+int	file_lengh(int fd, g_data *game);
 int	map_cep_error(int c, int e, int p, int invalid);
 int	map_cep_error_2(int p, int invalid);
 

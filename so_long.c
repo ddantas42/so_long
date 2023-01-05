@@ -18,31 +18,28 @@ void	free_everything(g_data *game)
 	exit(EXIT_FAILURE);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
 int main(int argc, char **argv)
 {
 	t_data	img;
 	g_data	game;
 
-	(void)argc;
-	(void)argv;
 	if (map_checker(argv[1], argc, &game) == 1)
 	{
 		free_everything(&game);
 		return (0);
 	}
 	ft_printf("Map checked complete\ninitiating window...\n");
-	game.x_window = 1920;
-	//printf("X = %d\n",game.x_window);
 	game.mlx = mlx_init();
+
+	if (game.x_window > 8160 || game.x_window < 32 || game.y_window < 32 || game.y_window > 8160)
+	{
+		ft_printf("CUIDADO COM O X OU Y!!!\nx = %d | y = %d\n", game.x_window, game.y_window);
+		return (0);
+	}
+
+	ft_printf("x_window = %d | y_window = %d\n", game.x_window, game.y_window);
 	game.mlx_window = mlx_new_window(game.mlx, game.x_window, game.y_window, "So_long :D");
+
 
 	//TESTING AREA IMAGES
 	char *path;
@@ -50,29 +47,34 @@ int main(int argc, char **argv)
 	int real_x = 32; int real_y = 32;
 	int *x_img; int *y_img;
 	x_img = &real_x; y_img = &real_y;
-	path = malloc(24);
-	path = "./images/background.xpm";
+	path = malloc(24); path = "./images/background.xpm";
 
 	
 	img.img = mlx_xpm_file_to_image(game.mlx, path, x_img, y_img);
 	if (!img.img)
 	{
-		ft_printf("Reading of image failed!");
+		ft_printf("Error\nReading of image failed!\n");
 		return (0);
 	}
-	
-	int x = 0; int y = 0;
-	while (y < 135)
+
+	int x = 0; int y = 0; int n = 0;
+	while (n < 8)
 	{
-		ft_printf("\ny = %d\n", y);
-		x = 0;
-		while (x < 240)
+		y = 0;
+		while(y < game.y_window / 32)
 		{
-			mlx_put_image_to_window(game.mlx, game.mlx_window, img.img, 32*x, 32*y);
-			x++;
+			x = 0;
+			while (x < game.x_window / 32)
+			{
+				mlx_put_image_to_window(game.mlx, game.mlx_window, img.img, 32*x, 32*y);
+				x++;
+			}
+			y++;
 		}
-		y++;
+		n++;
 	}
+
+	ft_printf("n = %d\n", n);
 
 	//TESTING AREA IMAGES
 

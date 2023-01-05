@@ -133,7 +133,7 @@ int	map_checker(char *file, int argc, g_data *game)
 		exit(EXIT_FAILURE);
 	}
 	fd = open(file, O_RDONLY);
-	map = (unsigned char **)malloc(file_lengh(fd) + 1);
+	map = (unsigned char **)malloc(file_lengh(fd, game) + 1);
 	if (!map)
 	{
 		ft_printf("Error\nMalloc allocation error\n");

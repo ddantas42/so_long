@@ -12,25 +12,31 @@
 
 #include "so_long.h"
 
-int	file_lengh(int fd)
+int	file_lengh(int fd, g_data *game)
 {
 	int				len;
 	unsigned char	*temp;
 
 	temp = (unsigned char *)malloc(255);
-	temp = (unsigned char *)get_next_line(fd);
 	if (!temp)
 	{
-		printf("Error\nFile empty or not found\n");
+		ft_printf("Error\nMalloc allocation");
+		exit(EXIT_FAILURE);
+	}
+	temp = (unsigned char *)get_next_line(fd);
+	if (!temp || ft_strlen((const char *)temp) == 0)
+	{
+		ft_printf("Error\nFile empty or not found\n");
 		exit(EXIT_FAILURE);
 	}
 	len = 0;
 	while (temp)
 	{
+		if (len == 0)
+			game->x_window = (ft_strlen((const char *)temp) - 1) * 32; 
 		len += ft_strlen((const char *)temp);
 		temp = (unsigned char *)get_next_line(fd);
 	}
-	//game->x_window = ft_strlen((const char *)temp) + 1;
 	free(temp);
 	close(fd);
 	return (len);
