@@ -31,13 +31,15 @@ int main(int argc, char **argv)
 	t_data	img;
 	g_data	game;
 
-	//(void)argc;
-	//(void)argv;
+	(void)argc;
+	(void)argv;
 	if (map_checker(argv[1], argc, &game) == 1)
+	{
 		free_everything(&game);
+		return (0);
+	}
 	ft_printf("Map checked complete\ninitiating window...\n");
-
-	game.y_window = 1080;
+	game.x_window = 1920;
 	//printf("X = %d\n",game.x_window);
 	game.mlx = mlx_init();
 	game.mlx_window = mlx_new_window(game.mlx, game.x_window, game.y_window, "So_long :D");
@@ -59,26 +61,10 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	
-
 	int x = 0; int y = 0;
 	while (y < 135)
 	{
 		ft_printf("\ny = %d\n", y);
-		x = 0;
-		while (x < 240)
-		{
-			mlx_put_image_to_window(game.mlx, game.mlx_window, img.img, 32*x, 32*y);
-			x++;
-		}
-		y++;
-	}
-	path = "./images/character.xpm";
-	img.img = mlx_xpm_file_to_image(game.mlx, path, x_img, y_img);
-	mlx_put_image_to_window(game.mlx, game.mlx_window, img.img, 32*100, 32*100);
-	y = 0; x = 0;
-	while (y < 135)
-	{
-		//ft_printf("\ny = %d\n", y);
 		x = 0;
 		while (x < 240)
 		{
