@@ -21,16 +21,17 @@
 
 # define ESCAPE 65307
 
+# define ON_W 119
+# define ON_A 97
+# define ON_S 115
+# define ON_D 100
+
 # define ON_KEYPRESS 2
 # define KEYPRESSMASK (1L<<0)
 
 # define ON_DESTROY 17
 # define DESTROYMARSK (1L<<17)
 
-# define ON_W 119
-# define ON_A 97
-# define ON_S 115
-# define ON_D 100
 
 typedef struct game_data {
 	void	*mlx;
@@ -39,25 +40,25 @@ typedef struct game_data {
 	int		y_window;
 }				g_data;
 
-typedef struct s_data {
+typedef struct images_data {
+	int		image_x;
+	int		image_y;
+	int		*ptr_image_x;
+	int		*ptr_image_y;
+	void	*background;
+	void	*character;
+	void	*exit;
+	void	*collectiable;
+
+}				i_data;
+
+typedef struct mlx_img_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }				t_data;
-
-/*		color.c		*/
-int	create_trgb(int t, int r, int g, int b);
-int	get_t(int trgb);
-int	get_r(int trgb);
-int	get_g(int trgb);
-int	get_b(int trgb);
-
-/*		so_long_utils.c		*/
-int	file_lengh(int fd, g_data *game);
-int	map_cep_error(int c, int e, int p, int invalid);
-int	map_cep_error_2(int p, int invalid);
 
 /*		key_events.c	*/
 int	window_cross(g_data *game);
@@ -69,5 +70,13 @@ int map_closed(unsigned char **map, int lines);
 int map_closed_2(unsigned char **map, int l, int n);
 int map_cep(unsigned char **map, int lines);
 int	map_checker(char *file, int argc, g_data *game);
+
+/*		so_long_utils.c		*/
+int	file_lengh(int fd, g_data *game);
+int	map_cep_error(int c, int e, int p, int invalid);
+int	map_cep_error_2(int p, int invalid);
+
+/*		vars_setup.c		*/
+int	assign_img(g_data *game, i_data *images);
 
 #endif

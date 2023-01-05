@@ -20,8 +20,9 @@ void	free_everything(g_data *game)
 
 int main(int argc, char **argv)
 {
-	t_data	img;
+	t_data	mlx_img;
 	g_data	game;
+	i_data images;
 
 	if (map_checker(argv[1], argc, &game) == 1)
 	{
@@ -40,7 +41,7 @@ int main(int argc, char **argv)
 	ft_printf("x_window = %d | y_window = %d\n", game.x_window, game.y_window);
 	game.mlx_window = mlx_new_window(game.mlx, game.x_window, game.y_window, "So_long :D");
 
-
+	assign_img(&game, &images);
 	//TESTING AREA IMAGES
 	char *path;
 	
@@ -50,8 +51,8 @@ int main(int argc, char **argv)
 	path = malloc(24); path = "./images/background.xpm";
 
 	
-	img.img = mlx_xpm_file_to_image(game.mlx, path, x_img, y_img);
-	if (!img.img)
+	mlx_img.img = mlx_xpm_file_to_image(game.mlx, path, x_img, y_img);
+	if (!mlx_img.img)
 	{
 		ft_printf("Error\nReading of image failed!\n");
 		return (0);
@@ -66,7 +67,7 @@ int main(int argc, char **argv)
 			x = 0;
 			while (x < game.x_window / 32)
 			{
-				mlx_put_image_to_window(game.mlx, game.mlx_window, img.img, 32*x, 32*y);
+				mlx_put_image_to_window(game.mlx, game.mlx_window, mlx_img.img, 32*x, 32*y);
 				x++;
 			}
 			y++;

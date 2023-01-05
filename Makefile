@@ -16,10 +16,10 @@ NAME = so_long
 RM = rm
 
 FILESC = so_long.c \
-		./src/color.c \
 		./src/key_events.c \
 		./src/map_error.c \
-		./src/so_long_utils.c
+		./src/so_long_utils.c \
+		./src/vars_setup.c
 
 OBJS = $(FILESC:.c=.o)
 
