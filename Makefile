@@ -6,12 +6,12 @@
 #    By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 17:37:45 by ddantas-          #+#    #+#              #
-#    Updated: 2022/12/30 15:12:39 by ddantas-         ###   ########.fr        #
+#    Updated: 2023/01/06 16:45:02 by ddantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror # -fsanitize=address para checkar leaks
 NAME = so_long
 RM = rm
 
@@ -29,6 +29,7 @@ FT_PRINTF = ./ft_printf/libftprintf.a
 MINILIBX = ./mlx_linux/libmlx_Linux.a
 GETNEXTLINE = ./get_next_line/get_next_line.a
 INC		= -lXext -lX11
+
 
 all: $(NAME)
 

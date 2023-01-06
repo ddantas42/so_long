@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/04 08:05:47 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:10:12 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_everything(g_data *game)
 
 int main(int argc, char **argv)
 {
-	t_data	mlx_img;
+	//t_data	mlx_img;
 	g_data	game;
 	i_data images;
 
@@ -41,22 +41,9 @@ int main(int argc, char **argv)
 	ft_printf("x_window = %d | y_window = %d\n", game.x_window, game.y_window);
 	game.mlx_window = mlx_new_window(game.mlx, game.x_window, game.y_window, "So_long :D");
 
-	assign_img(&game, &images);
 	//TESTING AREA IMAGES
-	char *path;
 	
-	int real_x = 32; int real_y = 32;
-	int *x_img; int *y_img;
-	x_img = &real_x; y_img = &real_y;
-	path = malloc(24); path = "./images/background.xpm";
-
-	
-	mlx_img.img = mlx_xpm_file_to_image(game.mlx, path, x_img, y_img);
-	if (!mlx_img.img)
-	{
-		ft_printf("Error\nReading of image failed!\n");
-		return (0);
-	}
+	assign_img(&game, &images);
 
 	int x = 0; int y = 0; int n = 0;
 	while (n < 8)
@@ -67,7 +54,7 @@ int main(int argc, char **argv)
 			x = 0;
 			while (x < game.x_window / 32)
 			{
-				mlx_put_image_to_window(game.mlx, game.mlx_window, mlx_img.img, 32*x, 32*y);
+				mlx_put_image_to_window(game.mlx, game.mlx_window, images.background, 32*x, 32*y);
 				x++;
 			}
 			y++;

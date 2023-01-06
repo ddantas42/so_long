@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/03 17:31:59 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:12:37 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 # define ON_S 115
 # define ON_D 100
 
+# define BACKGROUND "./images/background.xpm"
+# define CHARACTER "./images/character.xpm"
+# define COLLECTIABLE "./images/collectiable.xpm"
+# define EXIT "./images/exit.xpm"
+# define WALL "./images/wall.xpm"
+
+
 # define ON_KEYPRESS 2
 # define KEYPRESSMASK (1L<<0)
 
@@ -43,12 +50,14 @@ typedef struct game_data {
 typedef struct images_data {
 	int		image_x;
 	int		image_y;
-	int		*ptr_image_x;
-	int		*ptr_image_y;
+	int		*ptr_x;
+	int		*ptr_y;
+	char	*path_0;
 	void	*background;
 	void	*character;
-	void	*exit;
 	void	*collectiable;
+	void	*exit;
+	void	*wall;
 
 }				i_data;
 
@@ -77,6 +86,7 @@ int	map_cep_error(int c, int e, int p, int invalid);
 int	map_cep_error_2(int p, int invalid);
 
 /*		vars_setup.c		*/
-int	assign_img(g_data *game, i_data *images);
+void	assign_img(g_data *game, i_data *images);
+void	error_img(void);
 
 #endif
