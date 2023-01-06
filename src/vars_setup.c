@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/06 18:51:02 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:52:28 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@ int	determine_cep(g_data *game, i_data *images)
 {
 	static int line = 0;
 	static int column = 0;
-
-	static int n = 0;
 	
-	ft_printf("column = %d\n", column);	
 	while (line < (game->y_window / 32) - 1)
 	{
 		if (column < (game->x_window / 32))
 		{
-			ft_printf("n = %d | line = %d | column = %d | map[%d][%d] = %c\n", n, line, column, line, column, game->map[line][column]);
-			
 			if (game->map[line][column] == '0')
 				images->buffer = images->background;
 			if (game->map[line][column] == 'P')
@@ -42,11 +37,9 @@ int	determine_cep(g_data *game, i_data *images)
 			if (game->map[line][column] == '1')
 				images->buffer = images->wall;
 			column++;
-			n++;
 			return (0);
 		}
 		column = 0;
-		n++;
 		line++;
 	}
 	line = 0;
