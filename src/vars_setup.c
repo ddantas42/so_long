@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/06 18:48:49 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:51:02 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,19 @@ void	draw_map(g_data *game, i_data *images)
 {
 	int	x = 0;
 	int	y = 0;
-	int	n = 0;
 	
-	//images->buffer = images->wall;
-	n = 0;
-	//while (n < 8)
-	//{
-		y = 0;
-		while(y < game->y_window / 32)
+	y = 0;
+	while(y < game->y_window / 32)
+	{
+		x = 0;
+		while (x < game->x_window / 32)
 		{
-			x = 0;
-			while (x < game->x_window / 32)
-			{
-				determine_cep(game, images);
-				mlx_put_image_to_window(game->mlx, game->mlx_window, images->buffer,x*32, y*32);
-				x++;
-			}
-			y++;
+			determine_cep(game, images);
+			mlx_put_image_to_window(game->mlx, game->mlx_window, images->buffer,x*32, y*32);
+			x++;
 		}
-	//	n++;
-	//}
+		y++;
+	}
 }
 
 void	assign_img(g_data *game, i_data *images)
