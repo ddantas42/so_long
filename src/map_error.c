@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/03 17:31:37 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:52:44 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int map_cep(unsigned char **map, int lines)
 }
 int	map_checker(char *file, int argc, g_data *game)
 {
-	unsigned char	**map;
 	int				n;
 	int				fd;
 	int				fd_new;
@@ -133,20 +132,19 @@ int	map_checker(char *file, int argc, g_data *game)
 		exit(EXIT_FAILURE);
 	}
 	fd = open(file, O_RDONLY);
-	map = (unsigned char **)malloc(file_lengh(fd, game) + 1);
-	if (!map)
+	game->map = (unsigned char **)malloc(file_lengh(fd, game) + 1);
+	if (!game->map)
 	{
 		ft_printf("Error\nMalloc allocation error\n");
 		exit(EXIT_FAILURE);
 	}
 	fd_new = open(file, O_RDONLY);
 	n = 0;
-	map[n] = (unsigned char *)get_next_line(fd_new);
-	while (map[n])
-		map[++n] = (unsigned char *)get_next_line(fd_new);
+	game->map[n] = (unsigned char *)get_next_line(fd_new);
+	while (game->map[n])
+		game->map[++n] = (unsigned char *)get_next_line(fd_new);
 	game->y_window = 32*n;
-	if (map_square(map, n) && map_closed(map, n - 1) && map_cep(map,n - 1))
+	if (map_square(game->map, n) && map_closed(game->map, n - 1) && map_cep(game->map, n - 1))
 		return (0);
-	free(map);
 	exit(EXIT_FAILURE);
 }

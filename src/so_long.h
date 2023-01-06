@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/06 17:12:37 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:30:49 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@
 
 
 typedef struct game_data {
-	void	*mlx;
-	void	*mlx_window;
-	int		x_window;
-	int		y_window;
+	void			*mlx;
+	void			*mlx_window;
+	int				x_window;
+	int				y_window;
+	unsigned char	**map;
 }				g_data;
 
 typedef struct images_data {
@@ -52,12 +53,12 @@ typedef struct images_data {
 	int		image_y;
 	int		*ptr_x;
 	int		*ptr_y;
-	char	*path_0;
 	void	*background;
 	void	*character;
 	void	*collectiable;
 	void	*exit;
 	void	*wall;
+	void	*buffer;
 
 }				i_data;
 
@@ -86,7 +87,9 @@ int	map_cep_error(int c, int e, int p, int invalid);
 int	map_cep_error_2(int p, int invalid);
 
 /*		vars_setup.c		*/
-void	assign_img(g_data *game, i_data *images);
 void	error_img(void);
+int		determine_cep(g_data *game, i_data *images);
+void	draw_map(g_data *game, i_data *images);
+void	assign_img(g_data *game, i_data *images);
 
 #endif

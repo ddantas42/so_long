@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/06 17:10:12 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:52:59 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,6 @@ int main(int argc, char **argv)
 	//TESTING AREA IMAGES
 	
 	assign_img(&game, &images);
-
-	int x = 0; int y = 0; int n = 0;
-	while (n < 8)
-	{
-		y = 0;
-		while(y < game.y_window / 32)
-		{
-			x = 0;
-			while (x < game.x_window / 32)
-			{
-				mlx_put_image_to_window(game.mlx, game.mlx_window, images.background, 32*x, 32*y);
-				x++;
-			}
-			y++;
-		}
-		n++;
-	}
-
-	ft_printf("n = %d\n", n);
 
 	//TESTING AREA IMAGES
 
