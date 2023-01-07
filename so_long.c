@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 14:34:18 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:15:43 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	free_everything(t_game *game)
 
 int main(int argc, char **argv)
 {
-	//t_data	mlx_img;
 	t_game	game;
 
 	game.map_collectiables = 0;
@@ -36,7 +35,6 @@ int main(int argc, char **argv)
 	ft_printf("x_window = %d | y_window = %d\n", game.x_window, game.y_window);
 	game.mlx_window = mlx_new_window(game.mlx, game.x_window, game.y_window, "So_long :D");
 	assign_img(&game);
-	ft_printf("Estou a funcionar!!! :D\n");
 	game.p_moves = 0;
 	mlx_hook(game.mlx_window, ON_KEYPRESS, 1L<<0, keypress_count, &game);
 	mlx_hook(game.mlx_window, ON_DESTROY, 1L<<17, window_cross, &game);

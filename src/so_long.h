@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 14:48:46 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:03:10 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,6 @@ typedef struct game_data {
 	void			*buffer;
 }				t_game;
 
-typedef struct mlx_img_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 /*		key_events.c	*/
 int		window_cross(t_game *game);
 int		keypress_count(int keycode, t_game *game);
@@ -75,15 +67,15 @@ int		map_cep(unsigned char **map, int lines, t_game *game);
 int		map_checker(char *file, int argc, t_game *game);
 
 /*		moves.c			*/
-int	c_check(t_game *game, int keycode);
 int		move_up(t_game *game);
 int		move_down(t_game *game);
 int		move_left(t_game *game);
 int		move_right(t_game *game);
 
 /*		so_long_utils.c		*/
+int		c_check(t_game *game, int keycode);
+int		e_check(t_game *game, int keycode);
 int		file_lengh(int fd, t_game *game);
-int		map_cep_2(unsigned char **map, int lines, int e, int p, int i, t_game *game);
 int		map_cep_error(int c, int e, int p, int invalid);
 int		map_cep_error_2(int p, int invalid);
 

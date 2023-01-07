@@ -6,11 +6,51 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 14:39:06 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:20:14 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	c_check(t_game *game, int keycode)
+{
+	if (keycode == ON_W)	
+		game->map[game->player_y - 1][game->player_x] = '0';
+	if (keycode == ON_A)
+		game->map[game->player_y][game->player_x - 1] = '0';
+	if (keycode == ON_S)
+		game->map[game->player_y + 1][game->player_x] = '0';
+	if (keycode == ON_D)		
+		game->map[game->player_y][game->player_x + 1] = '0';
+	game->map_collectiables--;
+	ft_printf("Collectiables left: %d\n", game->map_collectiables);
+	return (0);
+}
+
+int e_check(t_game *game, int keycode)
+{
+	if (keycode == ON_W && game->map_collectiables == 0)
+	{
+		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
+		exit(EXIT_SUCCESS);
+	}
+	if (keycode == ON_A && game->map_collectiables == 0)
+	{
+		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
+		exit(EXIT_SUCCESS);
+	}
+	if (keycode == ON_S && game->map_collectiables == 0)
+	{
+		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
+		exit(EXIT_SUCCESS);
+	}
+	if (keycode == ON_D && game->map_collectiables == 0)		
+	{
+		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
+}
 
 int	file_lengh(int fd, t_game *game)
 {
