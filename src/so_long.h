@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 14:37:43 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:48:46 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		map_cep(unsigned char **map, int lines, t_game *game);
 int		map_checker(char *file, int argc, t_game *game);
 
 /*		moves.c			*/
+int	c_check(t_game *game, int keycode);
 int		move_up(t_game *game);
 int		move_down(t_game *game);
 int		move_left(t_game *game);
