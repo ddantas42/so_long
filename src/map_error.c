@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 14:38:47 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:46:08 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	map_cep(unsigned char **map, int lines, t_game *game)
 	e = 0;
 	p = 0;
 	i = 0;
-	while (lines >= 0)
+	while (lines-- >= 1)
 	{
 		n = 0;
 		while (n < (int)ft_strlen((const char *)map[0]) - 1)
@@ -102,7 +102,6 @@ int	map_cep(unsigned char **map, int lines, t_game *game)
 				i++;
 			n++;
 		}	
-		lines--;
 	}
 	return (map_cep_error(game->map_collectiables, e, p, i));
 }
@@ -131,7 +130,7 @@ int	map_checker(char *file, int argc, t_game *game)
 		game->map[++n] = (unsigned char *)get_next_line(fd);
 	game->y_window = 32 * n;
 	if (map_square(game->map, n)
-		&& map_closed(game->map, n - 1) && map_cep(game->map, n - 1, game))
+		&& map_closed(game->map, n - 1) && map_cep(game->map, n, game))
 		return (0);
 	exit(EXIT_FAILURE);
 }
