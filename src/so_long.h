@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:24:08 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:37:43 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct game_data {
 	unsigned char	**map;
 	int				player_x;
 	int				player_y;
+	int				map_collectiables;
 	int				image_x;
 	int				image_y;
 	int				*ptr_x;
@@ -70,7 +71,7 @@ int		keypress_count(int keycode, t_game *game);
 int		map_square(unsigned char **map, int lines);
 int		map_closed(unsigned char **map, int lines);
 int		map_closed_2(unsigned char **map, int l, int n);
-int		map_cep(unsigned char **map, int lines);
+int		map_cep(unsigned char **map, int lines, t_game *game);
 int		map_checker(char *file, int argc, t_game *game);
 
 /*		moves.c			*/
@@ -81,7 +82,7 @@ int		move_right(t_game *game);
 
 /*		so_long_utils.c		*/
 int		file_lengh(int fd, t_game *game);
-int		map_cep_2(unsigned char **map, int lines, int c, int e, int p, int i);
+int		map_cep_2(unsigned char **map, int lines, int e, int p, int i, t_game *game);
 int		map_cep_error(int c, int e, int p, int invalid);
 int		map_cep_error_2(int p, int invalid);
 

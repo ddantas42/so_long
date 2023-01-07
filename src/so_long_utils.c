@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/06 16:39:35 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:39:06 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,6 @@ int	file_lengh(int fd, t_game *game)
 	free(temp);
 	close(fd);
 	return (len);
-}
-
-int	map_cep_2(unsigned char **map, int lines, int c, int e, int p, int i)
-{
-	int	n;
-
-	while (lines >= 0)
-	{
-		n = 0;
-		while (n < (int)ft_strlen((const char *)map[0]) - 1)
-		{
-			if (map[lines][n] == 'C')
-				c++;
-			else if (map[lines][n] == 'E')
-				e++;
-			else if (map[lines][n] == 'P')
-				p++;
-			else if (map[lines][n] != '0' && map[lines][n] != '1')
-				i++;
-			n++;
-		}	
-		lines--;
-	}
-	return (map_cep_error(c, e, p, i));
 }
 
 int	map_cep_error(int c, int e, int p, int invalid)
