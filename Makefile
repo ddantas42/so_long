@@ -6,7 +6,7 @@
 #    By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 17:37:45 by ddantas-          #+#    #+#              #
-#    Updated: 2023/01/06 16:45:02 by ddantas-         ###   ########.fr        #
+#    Updated: 2023/01/07 13:22:12 by ddantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ RM = rm
 FILESC = so_long.c \
 		./src/key_events.c \
 		./src/map_error.c \
+		./src/moves.c \
 		./src/so_long_utils.c \
-		./src/vars_setup.c
+		./src/vars_setup.c 
 
 OBJS = $(FILESC:.c=.o)
 

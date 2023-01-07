@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/06 19:09:40 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:27:14 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,8 @@ int	window_cross(t_game *game)
 	return (0);
 }
 
-int	keypress_actions_2(int keycode, t_game *game)
+int	keypress_count(int keycode, t_game *game)
 {
-	if (keycode == ON_S)
-	{
-		game->p_moves++;
-		ft_printf("Moves made: %d\n", game->p_moves);
-	}
-	if (keycode == ON_D)
-	{
-		game->p_moves++;
-		ft_printf("Moves made: %d\n", game->p_moves);
-	}
-	return (0);
-}
-
-int	keypress_actions(int keycode, t_game *game)
-{
-	ft_printf("Key pressed = %d\n", keycode);
 	if (keycode == ESCAPE)
 	{
 		ft_printf("Escape pressed!\nClosing program...\n");
@@ -47,15 +31,12 @@ int	keypress_actions(int keycode, t_game *game)
 		exit(EXIT_SUCCESS);
 	}
 	if (keycode == ON_W)
-	{
-		game->p_moves++;
-		ft_printf("Moves made: %d\n", game->p_moves);
-	}
+		move_up(game);
 	if (keycode == ON_A)
-	{
-		game->p_moves++;
-		ft_printf("Moves made: %d\n", game->p_moves);
-	}		
-	keypress_actions_2(keycode, game);
+		move_left(game);
+	if (keycode == ON_S)
+		move_down(game);
+	if (keycode == ON_D)
+		move_right(game);
 	return (0);
 }
