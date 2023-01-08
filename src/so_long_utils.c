@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/08 20:47:07 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:44:16 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,11 @@ int	c_check(t_game *game, int keycode)
 	return (0);
 }
 
-int	e_check(t_game *game, int keycode)
+int	e_check(t_game *game)
 {
-	if (keycode == ON_W && game->map_collectiables == 0)
+	if (game->map_collectiables == 0)
 	{
-		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
-		exit(EXIT_SUCCESS);
-	}
-	if (keycode == ON_A && game->map_collectiables == 0)
-	{
-		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
-		exit(EXIT_SUCCESS);
-	}
-	if (keycode == ON_S && game->map_collectiables == 0)
-	{
-		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
-		exit(EXIT_SUCCESS);
-	}
-	if (keycode == ON_D && game->map_collectiables == 0)
-	{
-		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
+		ft_printf("Congrats! you made %d moves!\n", ++game->p_moves);
 		exit(EXIT_SUCCESS);
 	}
 	return (1);

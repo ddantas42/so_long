@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 15:03:10 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:44:37 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@
 # define ON_DESTROY 17
 
 # define BACKGROUND "./images/background.xpm"
-# define CHARACTER "./images/character.xpm"
-# define COLLECTIABLE "./images/collectiable.xpm"
+# define CHARACTER "./images/character/character_start.xpm"
+# define CHARACTER_UP "./images/character/character_up.xpm"
+# define CHARACTER_LEFT "./images/character/character_left.xpm"
+# define CHARACTER_DOWN "./images/character/character_down.xpm"
+# define CHARACTER_RIGHT "./images/character/character_right.xpm"
+# define COLLECTIABLE_UP "./images/collectiable/collectiable_up.xpm"
+# define COLLECTIABLE "./images/collectiable/collectiable_mid.xpm"
+# define COLLECTIABLE_DOWN "./images/collectiable/collectiable_down.xpm"
 # define EXIT "./images/exit.xpm"
 # define WALL "./images/wall.xpm"
 
@@ -49,7 +55,13 @@ typedef struct game_data {
 	int				*ptr_y;
 	void			*background;
 	void			*character;
+	void			*characterup;
+	void			*characterleft;
+	void			*characterdown;
+	void			*characterright;
+	void			*collectiableup;
 	void			*collectiable;
+	void			*collectiabledown;
 	void			*exit;
 	void			*wall;
 	void			*buffer;
@@ -66,6 +78,11 @@ int		map_closed_2(unsigned char **map, int l, int n);
 int		map_cep(unsigned char **map, int lines, t_game *game);
 int		map_checker(char *file, int argc, t_game *game);
 
+/*		map_setup.c		*/
+int		img_p_set(t_game *game, int line, int column);
+int		determine_cep(t_game *game);
+void	draw_map(t_game *game);
+
 /*		moves.c			*/
 int		move_up(t_game *game);
 int		move_down(t_game *game);
@@ -74,16 +91,15 @@ int		move_right(t_game *game);
 
 /*		so_long_utils.c		*/
 int		c_check(t_game *game, int keycode);
-int		e_check(t_game *game, int keycode);
+int		e_check(t_game *game);
 int		file_lengh(int fd, t_game *game);
 int		map_cep_error(int c, int e, int p, int invalid);
 int		map_cep_error_2(int p, int invalid);
 
 /*		vars_setup.c		*/
-void	error_img(void);
-int		img_p_set(t_game *game, int line, int column);
-int		determine_cep(t_game *game);
-void	draw_map(t_game *game);
+void	error_img(int code);
+void	assign_sprites_c_2(t_game *game);
+void	assign_sprites_c(t_game *game);
 void	assign_img(t_game *game);
 
 #endif
