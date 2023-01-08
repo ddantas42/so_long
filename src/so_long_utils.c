@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 16:05:51 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:47:07 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	e_check(t_game *game, int keycode)
 		ft_printf("Congrats! you made %d moves!\n", game->p_moves);
 		exit(EXIT_SUCCESS);
 	}
-	return (0);
+	return (1);
 }
 
 int	file_lengh(int fd, t_game *game)
