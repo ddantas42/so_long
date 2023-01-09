@@ -22,23 +22,6 @@ void	error_img(int code)
 	exit(EXIT_FAILURE);
 }
 
-void	assign_sprites_c_2(t_game *game)
-{
-	game->collectiableup = mlx_xpm_file_to_image(
-			game->mlx, COLLECTIABLE_UP, game->ptr_x, game->ptr_y);
-	if (!game->collectiableup)
-		error_img(9);
-	game->collectiable = mlx_xpm_file_to_image(
-			game->mlx, COLLECTIABLE, game->ptr_x, game->ptr_y);
-	if (!game->collectiable)
-		error_img(10);
-	game->collectiabledown = mlx_xpm_file_to_image(
-			game->mlx, COLLECTIABLE_DOWN, game->ptr_x, game->ptr_y);
-	if (!game->collectiabledown)
-		error_img(11);
-
-}
-
 void	assign_sprites_c(t_game *game)
 {
 	game->character = mlx_xpm_file_to_image(
@@ -61,7 +44,10 @@ void	assign_sprites_c(t_game *game)
 			game->mlx, CHARACTER_RIGHT, game->ptr_x, game->ptr_y);
 	if (!game->characterright)
 		error_img(8);
-	assign_sprites_c_2(game);
+	game->collectiable = mlx_xpm_file_to_image(
+			game->mlx, COLLECTIABLE, game->ptr_x, game->ptr_y);
+	if (!game->collectiable)
+		error_img(9);
 	draw_map(game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/08 22:44:37 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:54:23 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@
 # define CHARACTER_LEFT "./images/character/character_left.xpm"
 # define CHARACTER_DOWN "./images/character/character_down.xpm"
 # define CHARACTER_RIGHT "./images/character/character_right.xpm"
-# define COLLECTIABLE_UP "./images/collectiable/collectiable_up.xpm"
 # define COLLECTIABLE "./images/collectiable/collectiable_mid.xpm"
-# define COLLECTIABLE_DOWN "./images/collectiable/collectiable_down.xpm"
 # define EXIT "./images/exit.xpm"
 # define WALL "./images/wall.xpm"
 
@@ -59,9 +57,7 @@ typedef struct game_data {
 	void			*characterleft;
 	void			*characterdown;
 	void			*characterright;
-	void			*collectiableup;
 	void			*collectiable;
-	void			*collectiabledown;
 	void			*exit;
 	void			*wall;
 	void			*buffer;
@@ -83,6 +79,7 @@ int		img_p_set(t_game *game, int line, int column);
 int		determine_cep(t_game *game);
 void	draw_map(t_game *game);
 
+
 /*		moves.c			*/
 int		move_up(t_game *game);
 int		move_down(t_game *game);
@@ -98,7 +95,6 @@ int		map_cep_error_2(int p, int invalid);
 
 /*		vars_setup.c		*/
 void	error_img(int code);
-void	assign_sprites_c_2(t_game *game);
 void	assign_sprites_c(t_game *game);
 void	assign_img(t_game *game);
 
