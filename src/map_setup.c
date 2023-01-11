@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/08 23:38:00 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:55:52 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,17 @@ int	img_p_set(t_game *game, int line, int column)
 	game->buffer = game->character;
 	return (0);
 }
+/*
+int	img_c_set(t_game *game, int line, int column)
+{
+	//static int	n = 0;
 
+	//game->map_c_y[n] = line;
+	//game->map_c_x[n++] = column;
+	if (line && column)
+		game->buffer = game->collectiable;
+	return (0);
+}*/
 
 int	determine_cep(t_game *game)
 {

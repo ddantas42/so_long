@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/08 22:44:16 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:44:36 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	c_check(t_game *game, int keycode)
 		game->map[game->player_y + 1][game->player_x] = '0';
 	if (keycode == ON_D)
 		game->map[game->player_y][game->player_x + 1] = '0';
-	game->map_collectiables--;
-	ft_printf("Collectiables left: %d\n", game->map_collectiables);
+	ft_printf("Collectiables left: %d\n", --game->map_collectiables);
 	return (0);
 }
 
@@ -32,6 +31,7 @@ int	e_check(t_game *game)
 	if (game->map_collectiables == 0)
 	{
 		ft_printf("Congrats! you made %d moves!\n", ++game->p_moves);
+		free(game->map);
 		exit(EXIT_SUCCESS);
 	}
 	return (1);
@@ -43,17 +43,7 @@ int	file_lengh(int fd, t_game *game)
 	unsigned char	*temp;
 
 	temp = (unsigned char *)malloc(255);
-	if (!temp)
-	{
-		ft_printf("Error\nMalloc allocation");
-		exit(EXIT_FAILURE);
-	}
-	temp = (unsigned char *)get_next_line(fd);
-	if (!temp || ft_strlen((const char *)temp) == 0)
-	{
-		ft_printf("Error\nFile empty or not found\n");
-		exit(EXIT_FAILURE);
-	}
+	temp = temp_treat(temp, fd);
 	len = 0;
 	while (temp)
 	{
