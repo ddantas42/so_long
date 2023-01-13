@@ -6,24 +6,25 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/11 22:59:42 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 21:32:46 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-unsigned char	*temp_treat(unsigned char *temp, int fd)
+unsigned char	*temp_treat(unsigned char *temp, int fd, t_game *game)
 {
 	if (!temp)
 	{
+		free(temp);
 		ft_printf("Error\nMalloc allocation");
-		exit(EXIT_FAILURE);
+		free_everything(game, 1);
 	}
 	temp = (unsigned char *)get_next_line(fd);
 	if (!temp || ft_strlen((const char *)temp) == 0)
 	{
 		ft_printf("Error\nFile empty or not found\n");
-		exit(EXIT_FAILURE);
+		free_everything(game, 1);
 	}
 	return (temp);
 }

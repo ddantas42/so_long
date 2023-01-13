@@ -6,23 +6,23 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:54:28 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:09:11 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int put_c_up(t_game *game)
+int	put_c_up(t_game *game)
 {
 	int	n;
-	
-	n = 0;	
+
+	n = 0;
 	while (n < game->map_all_c)
 	{
 		if (!game->map_c_x[n] || !game->map_c_y[n])
 		{
 			n++;
-			continue;
+			continue ;
 		}
 		if (game->map[game->map_c_y[n]][game->map_c_x[n]] == 'C')
 		{
@@ -35,17 +35,17 @@ int put_c_up(t_game *game)
 	return (0);
 }
 
-int put_c_mid(t_game *game)
+int	put_c_mid(t_game *game)
 {
 	int	n;
-	
-	n = 0;	
+
+	n = 0;
 	while (n < game->map_all_c)
 	{
 		if (!game->map_c_x[n] || !game->map_c_y[n])
 		{
 			n++;
-			continue;
+			continue ;
 		}
 		if (game->map[game->map_c_y[n]][game->map_c_x[n]] == 'C')
 		{
@@ -58,17 +58,17 @@ int put_c_mid(t_game *game)
 	return (0);
 }
 
-int put_c_down(t_game *game)
+int	put_c_down(t_game *game)
 {
 	int	n;
-	
-	n = 0;	
+
+	n = 0;
 	while (n < game->map_all_c)
 	{
 		if (!game->map_c_x[n] || !game->map_c_y[n])
 		{
 			n++;
-			continue;
+			continue ;
 		}
 		if (game->map[game->map_c_y[n]][game->map_c_x[n]] == 'C')
 		{
@@ -84,8 +84,9 @@ int put_c_down(t_game *game)
 int	window_cross(t_game *game)
 {
 	ft_printf("windown cross pressed!\nClosing program...\n");
+	mlx_destroy_window(game->mlx, game->mlx_window);
 	mlx_loop_end((game)->mlx);
-	exit(EXIT_SUCCESS);
+	free_everything(game, 3);
 	return (0);
 }
 
@@ -96,8 +97,7 @@ int	keypress_count(int keycode, t_game *game)
 		ft_printf("Escape pressed!\nClosing program...\n");
 		mlx_destroy_window(game->mlx, game->mlx_window);
 		mlx_loop_end((game)->mlx);
-		free(game->map);
-		exit(EXIT_SUCCESS);
+		free_everything(game, 3);
 	}
 	if (keycode == ON_W)
 		move_up(game);

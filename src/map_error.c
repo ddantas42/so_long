@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:51:07 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:55:49 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ int	map_checker(char *file, int argc, t_game *game)
 	if (argc != 2)
 	{
 		ft_printf("Error\ninsert only the map as a parameter!!\n");
-		exit(EXIT_FAILURE);
+		free_everything(game, 1);
 	}
 	fd = open(file, O_RDONLY);
 	game->map = (unsigned char **)malloc(file_lengh(fd, game) + 1);
 	if (!game->map)
 	{
 		ft_printf("Error\nMalloc allocation error\n");
-		exit(EXIT_FAILURE);
+		free_everything(game, 1);
 	}
 	fd = open(file, O_RDONLY);
 	n = 0;
@@ -129,9 +129,8 @@ int	map_checker(char *file, int argc, t_game *game)
 	while (game->map[n])
 		game->map[++n] = (unsigned char *)get_next_line(fd);
 	game->y_window = 32 * n;
-	ft_printf("map[0][0] = %c", game->map[0][0]);
 	if (map_square(game->map, n)
 		&& map_closed(game->map, n - 1) && map_cep(game->map, n, game))
 		return (0);
-	exit(EXIT_FAILURE);
+	return (free_everything(game, 1));
 }

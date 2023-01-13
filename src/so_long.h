@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:43:49 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:58:34 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../mlx_linux/mlx.h"
 # include "../ft_printf/ft_printf.h"
-# include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 
 # define ESCAPE 65307
@@ -71,6 +70,11 @@ typedef struct game_data {
 	void			*buffer;
 }				t_game;
 
+/*		so_long.c	*/
+int				next_frame_2(t_game *game, int *loop);
+int				next_frame(t_game *game);
+int				free_everything(t_game *game, int part);
+
 /*		events.c	*/
 int				put_c_up(t_game *game);
 int				put_c_mid(t_game *game);
@@ -86,13 +90,14 @@ int				map_cep(unsigned char **map, int lines, t_game *game);
 int				map_checker(char *file, int argc, t_game *game);
 
 /*		map_setup.c		*/
+size_t			ft_strlen(const char *s);
 int				img_p_set(t_game *game, int line, int column);
 void			img_c_set(t_game *game, int line, int column);
 int				determine_cep(t_game *game);
 void			draw_map(t_game *game);
 
 /*		moves.c			*/
-unsigned char	*temp_treat(unsigned char *temp, int fd);
+unsigned char	*temp_treat(unsigned char *temp, int fd, t_game *game);
 int				move_up(t_game *game);
 int				move_down(t_game *game);
 int				move_left(t_game *game);
@@ -106,7 +111,7 @@ int				map_cep_error(int c, int e, int p, int invalid);
 int				map_cep_error_2(int p, int invalid);
 
 /*		vars_setup.c		*/
-void			error_img(int code);
+void			error_img(t_game *game, int code);
 void			assign_sprites_c(t_game *game);
 void			assign_img(t_game *game);
 

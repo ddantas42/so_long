@@ -6,60 +6,65 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:49:50 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 21:37:08 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./src/so_long.h"
 
-int	next_frame(t_game *game)
+int	next_frame_2(t_game *game, int *loop)
 {
-	static int loop = 0;
-
-	//if (game->frames % 10000 == 0)
-	//	ft_printf("game->frames = %d\n", game->frames);
 	if (game->frames < 30000)
 	{
-		if (loop)
-			game->frames = 0;
-		if (game->frames == 15000)
-		{
-			put_c_down(game);
-			//ft_printf("Put Collectiable low\n");
-		}
-		loop = 0;
-		game->frames++;
-		return (0);
-	}
-	if (game->frames == 30000)
-	{
-		put_c_mid(game);
-		//ft_printf("Put Collectiable mid\n");
-	}
-	if (game->frames < 60000)
-	{
-		if (loop == 0)
+		if (*loop == 0)
 			game->frames++;
-		if (loop == 1)
+		if (*loop == 1)
 			game->frames--;
 		return (0);
 	}
-	if (game->frames >= 45000)
+	if (game->frames >= 22500)
 	{
-		loop = 1;
-		//ft_printf("Put Collectiable high\n");
+		*loop = 1;
 		put_c_up(game);
-		game->frames = 59999;
+		game->frames = 29999;
 		return (0);
 	}
 	return (0);
 }
 
-
-void	free_everything(t_game *game)
+int	next_frame(t_game *game)
 {
-	free(game);
-	free(game->map);
+	static int	loop = 0;
+
+	if (game->frames < 15000)
+	{
+		if (loop)
+			game->frames = 0;
+		if (game->frames == 7500)
+			put_c_down(game);
+		loop = 0;
+		game->frames++;
+		return (0);
+	}
+	if (game->frames == 15000)
+		put_c_mid(game);
+	return (next_frame_2(game, &loop));
+}
+
+int	free_everything(t_game *game, int part)
+{
+	if (part >= 1)
+		free(game->map);
+	if (part >= 2)
+	{
+		free(game->mlx_window);
+		free(game->mlx);
+	}
+	if (part >= 3)
+		free(game->map_c_x);
+	if (part >= 4)
+		free(game->map_c_y);
+	ft_printf("Memory freed! :D\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -69,9 +74,9 @@ int	main(int argc, char **argv)
 
 	game.map_collectiables = 0;
 	game.p_moves = 0;
-	game.frames = 30001;
+	game.frames = 15001;
 	if (map_checker(argv[1], argc, &game) == 1)
-		free_everything(&game);
+		free_everything(&game, 1);
 	ft_printf("Map checked complete\ninitiating window...\n");
 	game.mlx = mlx_init();
 	game.mlx_window = mlx_new_window(

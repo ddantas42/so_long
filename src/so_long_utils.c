@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:24:30 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 21:33:38 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	e_check(t_game *game)
 	if (game->map_collectiables == 0)
 	{
 		ft_printf("Congrats! you made %d moves!\n", ++game->p_moves);
-		free(game->map);
-		exit(EXIT_SUCCESS);
+		free_everything(game, 100);
 	}
 	return (1);
 }
@@ -43,7 +42,7 @@ int	file_lengh(int fd, t_game *game)
 	unsigned char	*temp;
 
 	temp = (unsigned char *)malloc(255);
-	temp = temp_treat(temp, fd);
+	temp = temp_treat(temp, fd, game);
 	len = 0;
 	while (temp)
 	{

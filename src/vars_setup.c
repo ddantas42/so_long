@@ -6,19 +6,19 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:24:16 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:10:35 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:00:42 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	error_img(int code)
+void	error_img(t_game *game, int code)
 {
 	if (code)
 		ft_printf("Error\nImage error code: %d\n", code);
 	else
 		ft_printf("Error\nImage error, no code");
-	exit(EXIT_FAILURE);
+	free_everything(game, 1);
 }
 
 void	assign_sprites_c(t_game *game)
@@ -26,27 +26,27 @@ void	assign_sprites_c(t_game *game)
 	game->character = mlx_xpm_file_to_image(
 			game->mlx, CHARACTER, game->ptr_x, game->ptr_y);
 	if (!game->character)
-		error_img(4);
+		error_img(game, 6);
 	game->characterup = mlx_xpm_file_to_image(
 			game->mlx, CHARACTER_UP, game->ptr_x, game->ptr_y);
 	if (!game->characterup)
-		error_img(5);
+		error_img(game, 7);
 	game->characterleft = mlx_xpm_file_to_image(
 			game->mlx, CHARACTER_LEFT, game->ptr_x, game->ptr_y);
 	if (!game->characterleft)
-		error_img(6);
+		error_img(game, 8);
 	game->characterdown = mlx_xpm_file_to_image(
 			game->mlx, CHARACTER_DOWN, game->ptr_x, game->ptr_y);
 	if (!game->characterdown)
-		error_img(7);
+		error_img(game, 9);
 	game->characterright = mlx_xpm_file_to_image(
 			game->mlx, CHARACTER_RIGHT, game->ptr_x, game->ptr_y);
 	if (!game->characterright)
-		error_img(8);
+		error_img(game, 10);
 	game->collectiable = mlx_xpm_file_to_image(
 			game->mlx, COLLECTIABLE, game->ptr_x, game->ptr_y);
 	if (!game->collectiable)
-		error_img(9);
+		error_img(game, 11);
 	draw_map(game);
 }
 
@@ -59,22 +59,22 @@ void	assign_img(t_game *game)
 	game->background = mlx_xpm_file_to_image(
 			game->mlx, BACKGROUND, game->ptr_x, game->ptr_y);
 	if (!game->background)
-		error_img(1);
+		error_img(game, 1);
 	game->exit = mlx_xpm_file_to_image(
 			game->mlx, EXIT, game->ptr_x, game->ptr_y);
 	if (!game->exit)
-		error_img(2);
+		error_img(game, 2);
 	game->wall = mlx_xpm_file_to_image(
 			game->mlx, WALL, game->ptr_x, game->ptr_y);
 	if (!game->wall)
-		error_img(3);
+		error_img(game, 3);
 	game->collectiableup = mlx_xpm_file_to_image(
 			game->mlx, COLLECTIABLEUP, game->ptr_x, game->ptr_y);
 	if (!game->collectiableup)
-		error_img(10);
+		error_img(game, 4);
 	game->collectiabledown = mlx_xpm_file_to_image(
 			game->mlx, COLLECTIABLEDOWN, game->ptr_x, game->ptr_y);
 	if (!game->collectiabledown)
-		error_img(11);
+		error_img(game, 5);
 	assign_sprites_c(game);
 }

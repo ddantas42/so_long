@@ -6,11 +6,21 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 17:11:11 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:03:53 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+size_t	ft_strlen(const char *s)
+{
+	int	n;
+
+	n = 0;
+	while (s[n] != '\0')
+		n++;
+	return (n);
+}
 
 int	img_p_set(t_game *game, int line, int column)
 {
@@ -23,7 +33,6 @@ int	img_p_set(t_game *game, int line, int column)
 void	img_c_set(t_game *game, int line, int column)
 {
 	static int	n = 0;
-
 
 	game->map_c_y[n] = line;
 	game->map_c_x[n++] = column;
@@ -68,7 +77,11 @@ void	draw_map(t_game *game)
 
 	game->map_all_c = 0;
 	game->map_c_x = (int *)malloc(255);
+	if (!game->map_c_x)
+		free_everything(game, 3);
 	game->map_c_y = (int *)malloc(255);
+	if (!game->map_c_y)
+		free_everything(game, 4);
 	y = 0;
 	while (y < game->y_window / 32)
 	{
