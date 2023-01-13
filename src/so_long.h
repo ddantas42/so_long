@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:00 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/11 22:55:01 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:43:49 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@
 # define CHARACTER_LEFT "./images/character/character_left.xpm"
 # define CHARACTER_DOWN "./images/character/character_down.xpm"
 # define CHARACTER_RIGHT "./images/character/character_right.xpm"
+# define COLLECTIABLEUP "./images/collectiable/collectiable_up.xpm"
 # define COLLECTIABLE "./images/collectiable/collectiable_mid.xpm"
+# define COLLECTIABLEDOWN "./images/collectiable/collectiable_down.xpm"
 # define EXIT "./images/exit.xpm"
 # define WALL "./images/wall.xpm"
 
@@ -48,6 +50,7 @@ typedef struct game_data {
 	int				player_x;
 	int				player_y;
 	int				map_collectiables;
+	int				map_all_c;
 	int				*map_c_x;
 	int				*map_c_y;
 	int				image_x;
@@ -60,13 +63,18 @@ typedef struct game_data {
 	void			*characterleft;
 	void			*characterdown;
 	void			*characterright;
+	void			*collectiableup;
 	void			*collectiable;
+	void			*collectiabledown;
 	void			*exit;
 	void			*wall;
 	void			*buffer;
 }				t_game;
 
-/*		key_events.c	*/
+/*		events.c	*/
+int				put_c_up(t_game *game);
+int				put_c_mid(t_game *game);
+int				put_c_down(t_game *game);
 int				window_cross(t_game *game);
 int				keypress_count(int keycode, t_game *game);
 
@@ -79,7 +87,7 @@ int				map_checker(char *file, int argc, t_game *game);
 
 /*		map_setup.c		*/
 int				img_p_set(t_game *game, int line, int column);
-int				img_c_set(t_game *game, int line, int column);
+void			img_c_set(t_game *game, int line, int column);
 int				determine_cep(t_game *game);
 void			draw_map(t_game *game);
 

@@ -6,7 +6,7 @@
 #    By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 17:37:45 by ddantas-          #+#    #+#              #
-#    Updated: 2023/01/08 22:38:59 by ddantas-         ###   ########.fr        #
+#    Updated: 2023/01/13 16:08:40 by ddantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = so_long
 RM = rm
 
 FILESC = so_long.c \
-		./src/key_events.c \
+		./src/events.c \
 		./src/map_error.c \
 		./src/map_setup.c \
 		./src/moves.c \

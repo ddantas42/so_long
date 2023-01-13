@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/07 15:46:08 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:51:07 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int	map_checker(char *file, int argc, t_game *game)
 	while (game->map[n])
 		game->map[++n] = (unsigned char *)get_next_line(fd);
 	game->y_window = 32 * n;
+	ft_printf("map[0][0] = %c", game->map[0][0]);
 	if (map_square(game->map, n)
 		&& map_closed(game->map, n - 1) && map_cep(game->map, n, game))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/11 22:55:52 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:08:43 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ int	img_p_set(t_game *game, int line, int column)
 	game->buffer = game->character;
 	return (0);
 }
-/*
-int	img_c_set(t_game *game, int line, int column)
-{
-	//static int	n = 0;
 
-	//game->map_c_y[n] = line;
-	//game->map_c_x[n++] = column;
+void	img_c_set(t_game *game, int line, int column)
+{
+	static int	n = 0;
+
+
+	game->map_c_y[n] = line;
+	game->map_c_x[n++] = column;
 	if (line && column)
 		game->buffer = game->collectiable;
-	return (0);
-}*/
+	game->map_all_c++;
+}
 
 int	determine_cep(t_game *game)
 {
@@ -45,7 +46,7 @@ int	determine_cep(t_game *game)
 			if (game->map[line][column] == 'P')
 				img_p_set(game, line, column);
 			if (game->map[line][column] == 'C')
-				game->buffer = game->collectiable;
+				img_c_set(game, line, column);
 			if (game->map[line][column] == 'E')
 				game->buffer = game->exit;
 			if (game->map[line][column] == '1')
@@ -65,6 +66,9 @@ void	draw_map(t_game *game)
 	int	x;
 	int	y;
 
+	game->map_all_c = 0;
+	game->map_c_x = (int *)malloc(255);
+	game->map_c_y = (int *)malloc(255);
 	y = 0;
 	while (y < game->y_window / 32)
 	{

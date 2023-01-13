@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:24:16 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/11 22:57:42 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:10:35 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,13 @@ void	assign_img(t_game *game)
 			game->mlx, WALL, game->ptr_x, game->ptr_y);
 	if (!game->wall)
 		error_img(3);
+	game->collectiableup = mlx_xpm_file_to_image(
+			game->mlx, COLLECTIABLEUP, game->ptr_x, game->ptr_y);
+	if (!game->collectiableup)
+		error_img(10);
+	game->collectiabledown = mlx_xpm_file_to_image(
+			game->mlx, COLLECTIABLEDOWN, game->ptr_x, game->ptr_y);
+	if (!game->collectiabledown)
+		error_img(11);
 	assign_sprites_c(game);
 }

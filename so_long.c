@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/11 23:33:07 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:49:50 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	next_frame(t_game *game)
 {
-	static int loop = 1;
+	static int loop = 0;
 
 	//if (game->frames % 10000 == 0)
 	//	ft_printf("game->frames = %d\n", game->frames);
@@ -23,13 +23,19 @@ int	next_frame(t_game *game)
 		if (loop)
 			game->frames = 0;
 		if (game->frames == 15000)
-			ft_printf("Put Collectiable low\n");
+		{
+			put_c_down(game);
+			//ft_printf("Put Collectiable low\n");
+		}
 		loop = 0;
 		game->frames++;
 		return (0);
 	}
 	if (game->frames == 30000)
-			ft_printf("Put Collectiable mid\n");
+	{
+		put_c_mid(game);
+		//ft_printf("Put Collectiable mid\n");
+	}
 	if (game->frames < 60000)
 	{
 		if (loop == 0)
@@ -41,7 +47,8 @@ int	next_frame(t_game *game)
 	if (game->frames >= 45000)
 	{
 		loop = 1;
-		ft_printf("Put Collectiable high\n");
+		//ft_printf("Put Collectiable high\n");
+		put_c_up(game);
 		game->frames = 59999;
 		return (0);
 	}
