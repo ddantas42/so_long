@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 21:37:08 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 21:58:49 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	free_everything(t_game *game, int part)
 		free(game->map_c_x);
 	if (part >= 4)
 		free(game->map_c_y);
-	ft_printf("Memory freed! :D\n");
 	exit(EXIT_FAILURE);
 }
 
