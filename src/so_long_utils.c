@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 21:33:38 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:34:13 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	c_check(t_game *game, int keycode)
 	if (keycode == ON_D)
 		game->map[game->player_y][game->player_x + 1] = '0';
 	ft_printf("Collectiables left: %d\n", --game->map_collectiables);
+	if (game->map_collectiables == 0)
+		ft_printf("Head to the exit!\n");
 	return (0);
 }
 
