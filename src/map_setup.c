@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 20:03:53 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/14 10:44:32 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void	draw_map(t_game *game)
 		}
 		y++;
 	}
+	ft_printf("Map has %d Collectiables! Good luck :D\n", game->map_all_c);
 }

@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 19:09:11 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/14 10:38:45 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,7 @@ int	put_c_down(t_game *game)
 int	window_cross(t_game *game)
 {
 	ft_printf("windown cross pressed!\nClosing program...\n");
-	mlx_destroy_window(game->mlx, game->mlx_window);
-	mlx_loop_end((game)->mlx);
-	free_everything(game, 3);
+	free_everything(game, 100);
 	return (0);
 }
 
@@ -95,9 +93,7 @@ int	keypress_count(int keycode, t_game *game)
 	if (keycode == ESCAPE)
 	{
 		ft_printf("Escape pressed!\nClosing program...\n");
-		mlx_destroy_window(game->mlx, game->mlx_window);
-		mlx_loop_end((game)->mlx);
-		free_everything(game, 3);
+		free_everything(game, 100);
 	}
 	if (keycode == ON_W)
 		move_up(game);

@@ -6,7 +6,7 @@
 /*   By: ddantas- <ddantas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:37:20 by ddantas-          #+#    #+#             */
-/*   Updated: 2023/01/13 21:58:49 by ddantas-         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:37:01 by ddantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	free_everything(t_game *game, int part)
 		free(game->map);
 	if (part >= 2)
 	{
+		mlx_loop_end((game)->mlx);
 		free(game->mlx_window);
 		free(game->mlx);
 	}
